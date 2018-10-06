@@ -1,16 +1,15 @@
 package com.linkedin.learning.reactivespring.repository;
 
-import com.linkedin.learning.reactivespring.model.CoinBaseResponse;
-import org.springframework.data.mongodb.repository.Query;
+import com.linkedin.learning.reactivespring.model.Price;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Repository
 public interface ReactivePriceRepository
-    extends ReactiveCrudRepository<CoinBaseResponse, String> {
+    extends ReactiveCrudRepository<Price, String> {
 
-  Flux<CoinBaseResponse> findByLastname(Mono<String> lastname);
+  Flux<Price> findByPrice(Mono<String> price);
 
-  @Query("{ 'firstname': ?0, 'lastname': ?1}")
-  Mono<CoinBaseResponse> findByFirstnameAndLastname(String firstname, String lastname);
 }

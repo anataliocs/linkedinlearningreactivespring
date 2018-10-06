@@ -3,6 +3,7 @@ package com.linkedin.learning.reactivespring.service;
 import com.linkedin.learning.reactivespring.model.CoinBaseResponse;
 import com.linkedin.learning.reactivespring.repository.ReactivePriceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -15,7 +16,7 @@ public class CoinbaseServiceImpl implements CoinbaseService {
   private WebClient webClient;
 
   @Autowired
-  private ReactivePriceRepository people;
+  private ReactivePriceRepository priceRepository;
 
   @Override
   public Mono<CoinBaseResponse> getCryptoPrice(String priceName) {
