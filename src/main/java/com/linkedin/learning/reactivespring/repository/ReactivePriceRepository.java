@@ -1,6 +1,6 @@
 package com.linkedin.learning.reactivespring.repository;
 
-import com.linkedin.learning.reactivespring.model.Price;
+import com.linkedin.learning.reactivespring.model.Purchase;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
@@ -8,8 +8,9 @@ import reactor.core.publisher.Mono;
 
 @Repository
 public interface ReactivePriceRepository
-    extends ReactiveCrudRepository<Price, String> {
+    extends ReactiveCrudRepository<Purchase, String> {
 
-  Flux<Price> findByPrice(Mono<String> price);
+  Flux<Purchase> findByPrice(Mono<String> price);
+
 
 }
