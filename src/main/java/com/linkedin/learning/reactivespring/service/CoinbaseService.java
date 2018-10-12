@@ -9,4 +9,6 @@ public interface CoinbaseService {
   Mono<CoinBaseResponse> getCryptoPrice(String priceName);
 
   Mono<Purchase> createPurchase(String priceName);
+
+  Mono<Purchase> getPurchase(String id);
 }
