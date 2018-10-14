@@ -1,7 +1,5 @@
 package com.linkedin.learning.reactivespring.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.linkedin.learning.reactivespring.model.CoinBaseResponse;
 import com.linkedin.learning.reactivespring.model.Purchase;
@@ -11,6 +9,7 @@ import org.springframework.data.mongodb.core.ReactiveMongoOperations;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -42,10 +41,17 @@ class CoinbaseServiceImpl implements CoinbaseService {
   }
 
   @Override
-  public Mono<Purchase> getPurchase(final String id) {
+  public Mono<Purchase> getPurchaseById(final String id) {
 
     final Mono<Purchase> purchaseMono = reactiveMongoTemplate.findById(id, Purchase.class);
 
+    return purchaseMono;
+  }
+
+  @Override
+  public Flux<Purchase> listAllPurchases() {
+
+    final Flux<Purchase> purchaseMono = reactiveMongoTemplate.findAll(Purchase.class);
 
     return purchaseMono;
   }

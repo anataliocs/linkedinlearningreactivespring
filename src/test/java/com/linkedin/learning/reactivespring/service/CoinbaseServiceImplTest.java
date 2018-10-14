@@ -19,6 +19,7 @@ public class CoinbaseServiceImplTest {
 
   @Test
   public void getCryptoPrice() throws Exception {
+    classUnderTest.getPurchaseById("id");
   }
 
   @Test

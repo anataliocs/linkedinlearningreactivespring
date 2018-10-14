@@ -21,6 +21,6 @@ class PurchaseController {
   @PostMapping(value = "/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
   public Mono<Purchase> createPurchase(@PathVariable("name") String name) {
 
-    return Mono.fromSupplier(() -> new Purchase("test", "price", LocalDateTime.now()));
+    return coinbaseService.createPurchase(name);
   }
 }

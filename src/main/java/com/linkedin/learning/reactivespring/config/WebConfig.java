@@ -28,4 +28,13 @@ public class WebConfig implements WebFluxConfigurer {
             .and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
         purchaseHandler::listPurchases);
   }
+
+  @Bean
+  public RouterFunction<ServerResponse> routerFunctionAllPurchases(
+      final PurchaseHandler purchaseHandler) {
+
+    return RouterFunctions.route(RequestPredicates.GET("/coin/purchase/v1/")
+            .and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
+        purchaseHandler::listAllPurchases);
+  }
 }

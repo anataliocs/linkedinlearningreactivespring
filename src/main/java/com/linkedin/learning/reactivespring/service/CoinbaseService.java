@@ -2,6 +2,7 @@ package com.linkedin.learning.reactivespring.service;
 
 import com.linkedin.learning.reactivespring.model.CoinBaseResponse;
 import com.linkedin.learning.reactivespring.model.Purchase;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface CoinbaseService {
@@ -10,5 +11,7 @@ public interface CoinbaseService {
 
   Mono<Purchase> createPurchase(String priceName);
 
-  Mono<Purchase> getPurchase(String id);
+  Mono<Purchase> getPurchaseById(String id);
+
+  Flux<Purchase> listAllPurchases();
 }
